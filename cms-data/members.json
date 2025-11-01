@@ -1,0 +1,178 @@
+[
+  {
+    "id": "1",
+    "name": "Jiwoo",
+    "koreanName": "지우",
+    "position": "Leader, Main Dancer",
+    "birthYear": 2006,
+    "nationality": "Korean",
+    "traineeYears": "6 years",
+    "emoji": "👑",
+    "color": "from-pink-400 to-rose-400",
+    "backstory": "Former ballerina who was scouted in 6th grade while shopping at a convenience store! Despite training for 6 years with intense dance practice, she always encouraged her members and led with grace and strength.",
+    "facts": [
+      "Loves Japanese tongue-twisters",
+      "Has a dog named Haneul",
+      "Ballet background shines in choreography",
+      "Known for her warm leadership style"
+    ],
+    "quote": "We've all been waiting for today",
+    "imageUrl": "https://pbs.twimg.com/media/G4bgpn1a0AAAZBq?format=jpg&name=large",
+    "quickFact": "Loves Japanese tongue-twisters! 🗣️",
+    "icon": "👑"
+  },
+  {
+    "id": "2",
+    "name": "Carmen",
+    "koreanName": "카르멘",
+    "position": "Main Vocalist",
+    "birthYear": 2005,
+    "nationality": "Indonesian (Bali)",
+    "traineeYears": "2 years",
+    "emoji": "🎤",
+    "color": "from-purple-400 to-pink-400",
+    "backstory": "From Bali, Indonesia! She secretly auditioned without telling her parents, sending 100 song videos. Despite being the only non-Korean speaker during training (2 years), she persevered and even won a high jump competition in 2018!",
+    "facts": [
+      "Tried rapping Saweetie songs",
+      "Bug taming expert - helped Ian with a cockroach during trainee days!",
+      "Viral ending fairy at Music Core (376+ likes)",
+      "Represents SEA fans' pride"
+    ],
+    "quote": "It still feels like a dream.",
+    "imageUrl": "https://pbs.twimg.com/media/G4bcMnLbEAAtQaf?format=jpg&name=4096x4096",
+    "quickFact": "I tried rapping once... 😂",
+    "icon": "🎤"
+  },
+  {
+    "id": "3",
+    "name": "Yuha",
+    "koreanName": "유하",
+    "position": "Visual, Lead Vocalist",
+    "birthYear": 2006,
+    "nationality": "Korean",
+    "traineeYears": "4-5 years",
+    "emoji": "✨",
+    "color": "from-blue-400 to-purple-400",
+    "backstory": "Auditioned with a Frozen song and has been called the 'Disney Princess' of H2H ever since! Trained for 4-5 years and is skilled at piano. Her ethereal visuals match her graceful personality.",
+    "facts": [
+      "Huge Disney fan",
+      "Plays piano beautifully",
+      "Has a 'Disney Princess' aura",
+      "Often praised for her elegant stage presence"
+    ],
+    "quote": "I'll show you better side of me.",
+    "imageUrl": "https://pbs.twimg.com/media/G4LnrjFXIAA7J2T?format=jpg&name=4096x4096",
+    "quickFact": "Huge Disney fan! 🏰✨",
+    "icon": "✨"
+  },
+  {
+    "id": "4",
+    "name": "Stella",
+    "koreanName": "스텔라",
+    "position": "All-Rounder, Sub Vocalist",
+    "birthYear": 2007,
+    "nationality": "Korean-Canadian (Vancouver)",
+    "traineeYears": "4 years",
+    "emoji": "🎸",
+    "color": "from-green-400 to-teal-400",
+    "backstory": "From Vancouver, Canada! A multi-talented musician who plays guitar, bass, and drums. She was in her school's jazz band and trained for 4 years, always helping everyone during practice sessions.",
+    "facts": [
+      "Plays guitar, bass, and drums",
+      "School jazz band member",
+      "Known for imitating NPCs (so funny!)",
+      "Supportive team player"
+    ],
+    "quote": "Helping everyone in practice.",
+    "imageUrl": "https://pbs.twimg.com/media/G2ftlsnbwAAwq5U?format=jpg&name=large",
+    "quickFact": "NPC impressions expert! 🎮",
+    "icon": "🎸"
+  },
+  {
+    "id": "5",
+    "name": "Juun",
+    "koreanName": "주운",
+    "position": "Main Rapper, Lead Dancer",
+    "birthYear": 2007,
+    "nationality": "Korean",
+    "traineeYears": "4 years",
+    "emoji": "🎵",
+    "color": "from-yellow-400 to-orange-400",
+    "backstory": "Won 1st place at a trainee showcase for both dance and rap! Trained for 4 years and calls herself 'Super Cutie' in her self-introduction. She's never forgotten the feeling of winning those rankings.",
+    "facts": [
+      "1st place winner at trainee showcase",
+      "Dual threat: dance + rap",
+      "Self-proclaimed 'Super Cutie'",
+      "Intense practice ethic"
+    ],
+    "quote": "I'll never forget the rankings.",
+    "imageUrl": "https://pbs.twimg.com/media/G4EZhLzXoAAo877?format=jpg&name=4096x4096",
+    "quickFact": "Self-proclaimed 'Super Cutie'! 🌟",
+    "icon": "🎵"
+  },
+  {
+    "id": "6",
+    "name": "A-na",
+    "koreanName": "아나",
+    "position": "Maknae, Vocalist",
+    "birthYear": 2010,
+    "nationality": "Korean",
+    "traineeYears": "2-3 years",
+    "emoji": "🍭",
+    "color": "from-pink-300 to-pink-500",
+    "backstory": "The baby of the group! Auditioned with an upbeat song and trained for 2-3 years. Despite being the youngest, she brings firecracker energy to every performance.",
+    "facts": [
+      "Can fold her tongue in half",
+      "Anime enthusiast",
+      "Calls FOCUS 'hypnotic'",
+      "Brings youthful energy to the group"
+    ],
+    "quote": "FOCUS is hypnotic.",
+    "imageUrl": "https://pbs.twimg.com/media/G4Q7KW9WQAA1Heg?format=jpg&name=large",
+    "quickFact": "Can fold my tongue in half! 👅",
+    "icon": "🍭"
+  },
+  {
+    "id": "7",
+    "name": "Ian",
+    "koreanName": "이안",
+    "position": "Mood Maker, Sub Vocalist",
+    "birthYear": 2009,
+    "nationality": "Korean",
+    "traineeYears": "3-4 years",
+    "emoji": "😊",
+    "color": "from-red-400 to-pink-400",
+    "backstory": "Her predebut photos went viral with 47k views! Trained for 3-4 years and was almost replaced in the lineup but made it through. Her childhood photos make her look like an actress from old dramas.",
+    "facts": [
+      "Predebut pics viral (47k views)",
+      "Childhood face resembles old drama stars",
+      "Almost got replaced but persevered",
+      "Group's dopamine booster"
+    ],
+    "quote": "Fans couldn't take their eyes off us.",
+    "imageUrl": "https://pbs.twimg.com/media/G4b8otnaQAA6X-i?format=jpg&name=4096x4096",
+    "quickFact": "Predebut viral queen! 📸✨",
+    "icon": "😊"
+  },
+  {
+    "id": "8",
+    "name": "Ye-on",
+    "koreanName": "예온",
+    "position": "Vocalist, Maknae Line",
+    "birthYear": 2008,
+    "nationality": "Korean",
+    "traineeYears": "2 years",
+    "emoji": "🎶",
+    "color": "from-indigo-400 to-purple-400",
+    "backstory": "Cast through DM in 6th grade! Has been singing trot since age 5. Trained for 2 years and brings a unique vocal color to H2H. She's a Detective Conan fan with Kaito Kid as her favorite character.",
+    "facts": [
+      "Singing trot since age 5",
+      "DM casted in 6th grade",
+      "Detective Conan superfan (loves Kaito Kid)",
+      "Unique vocal tone"
+    ],
+    "quote": "Don't blink or you'll miss our charm!",
+    "imageUrl": "https://pbs.twimg.com/media/G4mgiXMakAEJjQ7?format=jpg&name=large",
+    "quickFact": "Detective Conan superfan! 🔍",
+    "icon": "🎶"
+  }
+]

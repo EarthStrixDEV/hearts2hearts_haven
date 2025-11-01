@@ -1,0 +1,18 @@
+{
+  "siteName": "Hearts2Hearts Haven",
+  "siteUrl": "https://h2hhaven.com",
+  "description": "Official fansite for Hearts2Hearts (H2H)",
+  "logo": "/images/h2h_logo.png",
+  "socialMedia": {
+    "twitter": "https://twitter.com/hearts2hearts",
+    "instagram": "https://instagram.com/hearts2hearts",
+    "youtube": "https://youtube.com/@hearts2hearts",
+    "weverse": "https://weverse.io/hearts2hearts"
+  },
+  "features": {
+    "comments": false,
+    "newsletter": false,
+    "multiLanguage": false
+  }
+}
+

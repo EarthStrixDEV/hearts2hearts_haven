@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description:
     "Official fan site for Hearts2Hearts (H2H) - Jiwoo, Carmen, Yuha, Stella, Juun, A-na, Ian, Ye-on. Join S2U community!",
   keywords: "Hearts2Hearts, H2H, K-pop, girl group, S2U, Carmen, Jiwoo, FOCUS",
+  icons: {
+    icon: "/images/h2h_logo.png",
+    shortcut: "/images/h2h_logo.png",
+    apple: "/images/h2h_logo.png",
+  },
   openGraph: {
     title: "Hearts2Hearts Haven - H2H Fan Site",
     description: "Join S2U community and celebrate H2H! 💕",

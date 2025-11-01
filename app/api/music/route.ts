@@ -78,7 +78,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(MUSIC_FILE_PATH, 'utf-8');
-    let musicVideos: MusicVideo[] = JSON.parse(fileContent);
+    const musicVideos = JSON.parse(fileContent) as MusicVideo[];
     
     const videoIndex = musicVideos.findIndex(v => v.id === updatedVideo.id);
     
@@ -126,19 +126,19 @@ export async function DELETE(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(MUSIC_FILE_PATH, 'utf-8');
-    let musicVideos: MusicVideo[] = JSON.parse(fileContent);
+    const musicVideos = JSON.parse(fileContent) as MusicVideo[];
     
     const initialLength = musicVideos.length;
-    musicVideos = musicVideos.filter(v => v.id !== videoId);
+    const filteredMusicVideos = musicVideos.filter(v => v.id !== videoId);
     
-    if (musicVideos.length === initialLength) {
+    if (filteredMusicVideos.length === initialLength) {
       return NextResponse.json(
         { error: 'Music video not found' },
         { status: 404 }
       );
     }
     
-    fs.writeFileSync(MUSIC_FILE_PATH, JSON.stringify(musicVideos, null, 2), 'utf-8');
+    fs.writeFileSync(MUSIC_FILE_PATH, JSON.stringify(filteredMusicVideos, null, 2), 'utf-8');
     
     return NextResponse.json(
       { message: 'Music video deleted successfully' },

@@ -41,10 +41,11 @@ function getRelatedNews(currentArticleId: string, limit: number = 3): NewsArticl
 // GET /api/news/[slug]
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = await params;
+    const params = await context.params;
+    const { slug } = params;
 
     const article = getNewsArticleBySlug(slug);
 
@@ -83,8 +84,9 @@ export async function GET(
 /*
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
+  const params = await context.params;
   const { slug } = params;
 
   // Database query example:

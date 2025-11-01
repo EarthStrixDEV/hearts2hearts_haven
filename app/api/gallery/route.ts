@@ -76,7 +76,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(GALLERY_FILE_PATH, 'utf-8');
-    let galleryImages: GalleryImage[] = JSON.parse(fileContent);
+    const galleryImages = JSON.parse(fileContent) as GalleryImage[];
     
     const imageIndex = galleryImages.findIndex(img => img.id === updatedImage.id);
     
@@ -124,19 +124,19 @@ export async function DELETE(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(GALLERY_FILE_PATH, 'utf-8');
-    let galleryImages: GalleryImage[] = JSON.parse(fileContent);
+    const galleryImages = JSON.parse(fileContent) as GalleryImage[];
     
     const initialLength = galleryImages.length;
-    galleryImages = galleryImages.filter(img => img.id !== imageId);
+    const filteredGalleryImages = galleryImages.filter(img => img.id !== imageId);
     
-    if (galleryImages.length === initialLength) {
+    if (filteredGalleryImages.length === initialLength) {
       return NextResponse.json(
         { error: 'Gallery image not found' },
         { status: 404 }
       );
     }
     
-    fs.writeFileSync(GALLERY_FILE_PATH, JSON.stringify(galleryImages, null, 2), 'utf-8');
+    fs.writeFileSync(GALLERY_FILE_PATH, JSON.stringify(filteredGalleryImages, null, 2), 'utf-8');
     
     return NextResponse.json(
       { message: 'Gallery image deleted successfully' },

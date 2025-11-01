@@ -151,7 +151,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(NEWS_FILE_PATH, 'utf-8');
-    let newsArticles: NewsArticle[] = JSON.parse(fileContent);
+    const newsArticles = JSON.parse(fileContent) as NewsArticle[];
     
     const articleIndex = newsArticles.findIndex(article => article.id === updatedArticle.id);
     
@@ -199,19 +199,19 @@ export async function DELETE(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(NEWS_FILE_PATH, 'utf-8');
-    let newsArticles: NewsArticle[] = JSON.parse(fileContent);
+    const newsArticles = JSON.parse(fileContent) as NewsArticle[];
     
     const initialLength = newsArticles.length;
-    newsArticles = newsArticles.filter(article => article.id !== articleId);
+    const filteredNewsArticles = newsArticles.filter(article => article.id !== articleId);
     
-    if (newsArticles.length === initialLength) {
+    if (filteredNewsArticles.length === initialLength) {
       return NextResponse.json(
         { error: 'News article not found' },
         { status: 404 }
       );
     }
     
-    fs.writeFileSync(NEWS_FILE_PATH, JSON.stringify(newsArticles, null, 2), 'utf-8');
+    fs.writeFileSync(NEWS_FILE_PATH, JSON.stringify(filteredNewsArticles, null, 2), 'utf-8');
     
     return NextResponse.json(
       { message: 'News article deleted successfully' },

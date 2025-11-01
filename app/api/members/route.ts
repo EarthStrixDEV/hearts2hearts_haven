@@ -82,7 +82,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(MEMBERS_FILE_PATH, 'utf-8');
-    let members: Member[] = JSON.parse(fileContent);
+    const members = JSON.parse(fileContent) as Member[];
     
     const memberIndex = members.findIndex(m => m.id === updatedMember.id);
     
@@ -130,19 +130,19 @@ export async function DELETE(request: NextRequest) {
     }
 
     const fileContent = fs.readFileSync(MEMBERS_FILE_PATH, 'utf-8');
-    let members: Member[] = JSON.parse(fileContent);
+    const members = JSON.parse(fileContent) as Member[];
     
     const initialLength = members.length;
-    members = members.filter(m => m.id !== memberId);
+    const filteredMembers = members.filter(m => m.id !== memberId);
     
-    if (members.length === initialLength) {
+    if (filteredMembers.length === initialLength) {
       return NextResponse.json(
         { error: 'Member not found' },
         { status: 404 }
       );
     }
     
-    fs.writeFileSync(MEMBERS_FILE_PATH, JSON.stringify(members, null, 2), 'utf-8');
+    fs.writeFileSync(MEMBERS_FILE_PATH, JSON.stringify(filteredMembers, null, 2), 'utf-8');
     
     return NextResponse.json(
       { message: 'Member deleted successfully' },

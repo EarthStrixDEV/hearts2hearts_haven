@@ -8,7 +8,7 @@ interface GalleryImage {
   title: string;
   category: string;
   member: string | null;
-  description: string;
+  title: string;
   emoji: string;
   imageUrl: string;
   uploadDate: string;
@@ -195,10 +195,9 @@ export default function GalleryPage() {
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-600 line-clamp-2">{image.description}</p>
+                    <p className="text-sm text-gray-600 line-clamp-2">{image.title}</p>
                     <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
                       <span>📅 {new Date(image.uploadDate).toLocaleDateString()}</span>
-                      <span>📁 {image.size}</span>
                     </div>
                   </div>
                 </div>
@@ -279,7 +278,7 @@ export default function GalleryPage() {
                         {lightboxImage.title}
                       </h2>
                       <p className="text-xl text-white/90 drop-shadow-lg">
-                        {lightboxImage.description}
+                        {lightboxImage.title}
                       </p>
                     </div>
                   </div>
@@ -307,7 +306,6 @@ export default function GalleryPage() {
                     month: "long",
                     day: "numeric"
                   })}</p>
-                  <p>📁 {lightboxImage.size}</p>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -337,7 +335,7 @@ export default function GalleryPage() {
                     if (navigator.share) {
                       navigator.share({
                         title: `${lightboxImage.title} - H2H Gallery`,
-                        text: `Check out this photo: ${lightboxImage.description}`,
+                        text: `Check out this photo: ${lightboxImage.title}`,
                         url: lightboxImage.imageUrl
                       });
                     } else {

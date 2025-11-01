@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { swalError, swalSuccess, swalWarning } from "@/app/cms/_utils/swal";
 
 interface MusicVideo {
   id: string;
@@ -37,7 +38,7 @@ export default function CreateMusicPage() {
 
   const handleSave = async () => {
     if (!formData.title || !formData.youtubeId) {
-      alert("กรุณากรอกข้อมูลที่จำเป็น (ชื่อเพลงและ YouTube ID)");
+      await swalWarning("กรุณากรอกข้อมูลที่จำเป็น (ชื่อเพลงและ YouTube ID)");
       return;
     }
 
@@ -52,14 +53,14 @@ export default function CreateMusicPage() {
       });
 
       if (response.ok) {
-        alert("เพิ่มเพลง/วิดีโอสำเร็จ!");
+        await swalSuccess("เพิ่มเพลง/วิดีโอสำเร็จ!");
         router.push("/cms/music");
       } else {
-        alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
       }
     } catch (error) {
       console.error('Error saving music video:', error);
-      alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+      await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
     } finally {
       setIsLoading(false);
     }

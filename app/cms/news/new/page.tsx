@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { swalSuccess } from "@/app/cms/_utils/swal";
 
 export default function CMSNewsEditor() {
   const router = useRouter();
@@ -53,8 +54,8 @@ export default function CMSNewsEditor() {
     setFormData((prev) => ({ ...prev, status }));
 
     // Simulate API call
-    setTimeout(() => {
-      alert(
+    setTimeout(async () => {
+      await swalSuccess(
         `บทความถูก${
           status === "draft"
             ? "บันทึกเป็นฉบับร่าง"

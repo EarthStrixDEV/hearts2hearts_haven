@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { swalConfirm, swalError, toastError, toastSuccess } from "@/app/cms/_utils/swal";
 
 import { NewsArticle } from "@/app/types/news";
 
@@ -52,11 +53,11 @@ export default function CMSNewsPage() {
         setArticles(cmsArticles);
       } else {
         console.error('Failed to load articles');
-        alert('ไม่สามารถโหลดข้อมูลบทความได้');
+        await toastError('ไม่สามารถโหลดข้อมูลบทความได้');
       }
     } catch (error) {
       console.error('Error loading articles:', error);
-      alert('เกิดข้อผิดพลาดในการโหลดข้อมูล');
+      await toastError('เกิดข้อผิดพลาดในการโหลดข้อมูล');
     } finally {
       setIsLoading(false);
     }
@@ -94,7 +95,7 @@ export default function CMSNewsPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบบทความนี้?")) {
+    if (await swalConfirm("คุณแน่ใจหรือไม่ว่าต้องการลบบทความนี้?", "ลบ")) {
       try {
         const response = await fetch(`/api/news?id=${id}`, {
           method: 'DELETE',
@@ -102,13 +103,13 @@ export default function CMSNewsPage() {
         
         if (response.ok) {
           setArticles(articles.filter((a) => a.id !== id));
-          alert("ลบบทความสำเร็จ!");
+          await toastSuccess("ลบบทความสำเร็จ!");
         } else {
-          alert("ไม่สามารถลบบทความได้");
+          await swalError("ไม่สามารถลบบทความได้");
         }
       } catch (error) {
         console.error('Error deleting article:', error);
-        alert("เกิดข้อผิดพลาดในการลบบทความ");
+        await swalError("เกิดข้อผิดพลาดในการลบบทความ");
       }
     }
   };
@@ -134,13 +135,13 @@ export default function CMSNewsPage() {
 
       if (response.ok) {
         await loadArticles(); // Reload articles
-        alert("บันทึกบทความสำเร็จ!");
+        await toastSuccess("บันทึกบทความสำเร็จ!");
       } else {
-        alert("ไม่สามารถบันทึกบทความได้");
+        await swalError("ไม่สามารถบันทึกบทความได้");
       }
     } catch (error) {
       console.error('Error saving article:', error);
-      alert("เกิดข้อผิดพลาดในการบันทึกบทความ");
+      await swalError("เกิดข้อผิดพลาดในการบันทึกบทความ");
     }
   };
 
@@ -358,7 +359,9 @@ export default function CMSNewsPage() {
                         👁️ ดูหน้าเว็บ
                       </Link>
                       <button
-                        onClick={() => alert("คัดลอก URL แล้ว!")}
+                        onClick={async () => {
+                          await toastSuccess("คัดลอก URL แล้ว!");
+                        }}
                         className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-semibold"
                       >
                         🔗 คัดลอกลิงก์

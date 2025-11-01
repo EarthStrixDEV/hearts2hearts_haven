@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import {
+  swalConfirm,
+  swalError,
+  toastError,
+  toastSuccess,
+} from "@/app/cms/_utils/swal";
 
 interface MusicVideo {
   id: string;
@@ -37,17 +43,17 @@ export default function CMSMusicPage() {
   const loadItems = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/music');
+      const response = await fetch("/api/music");
       if (response.ok) {
         const musicData = await response.json();
         setItems(musicData);
       } else {
-        console.error('Failed to load music videos');
-        alert('ไม่สามารถโหลดข้อมูลเพลงและวิดีโอได้');
+        console.error("Failed to load music videos");
+        await toastError("ไม่สามารถโหลดข้อมูลเพลงและวิดีโอได้");
       }
     } catch (error) {
-      console.error('Error loading music videos:', error);
-      alert('เกิดข้อผิดพลาดในการโหลดข้อมูล');
+      console.error("Error loading music videos:", error);
+      await toastError("เกิดข้อผิดพลาดในการโหลดข้อมูล");
     } finally {
       setIsLoading(false);
     }
@@ -61,10 +67,10 @@ export default function CMSMusicPage() {
   const handleSave = async () => {
     if (editingVideo) {
       try {
-        const response = await fetch('/api/music', {
-          method: 'PUT',
+        const response = await fetch("/api/music", {
+          method: "PUT",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(editingVideo),
         });
@@ -72,36 +78,36 @@ export default function CMSMusicPage() {
         if (response.ok) {
           // Reload music data
           await loadItems();
-          alert("บันทึกข้อมูลวิดีโอสำเร็จ!");
+          await toastSuccess("บันทึกข้อมูลวิดีโอสำเร็จ!");
           setShowModal(false);
           setEditingVideo(null);
         } else {
-          alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+          await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
         }
       } catch (error) {
-        console.error('Error saving video:', error);
-        alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        console.error("Error saving video:", error);
+        await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
       }
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบวิดีโอนี้?")) {
+    if (await swalConfirm("คุณแน่ใจหรือไม่ว่าต้องการลบวิดีโอนี้?", "ลบ")) {
       try {
         const response = await fetch(`/api/music?id=${id}`, {
-          method: 'DELETE',
+          method: "DELETE",
         });
 
         if (response.ok) {
           // Reload music data
           await loadItems();
-          alert("ลบวิดีโอสำเร็จ!");
+          await toastSuccess("ลบวิดีโอสำเร็จ!");
         } else {
-          alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+          await swalError("เกิดข้อผิดพลาดในการลบข้อมูล");
         }
       } catch (error) {
-        console.error('Error deleting video:', error);
-        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+        console.error("Error deleting video:", error);
+        await swalError("เกิดข้อผิดพลาดในการลบข้อมูล");
       }
     }
   };
@@ -126,8 +132,18 @@ export default function CMSMusicPage() {
               href="/cms/music/new"
               className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-4 rounded-2xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 4v16m8-8H4"
+                />
               </svg>
               เพิ่มวิดีโอใหม่
             </Link>
@@ -167,22 +183,24 @@ export default function CMSMusicPage() {
                       📅{" "}
                       {new Date(item.releaseDate).toLocaleDateString("th-TH")}
                     </span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                      item.featured 
-                        ? "bg-yellow-100 text-yellow-800" 
-                        : "bg-gray-100 text-gray-600"
-                    }`}>
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                        item.featured
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-gray-100 text-gray-600"
+                      }`}
+                    >
                       {item.featured ? "⭐ Featured" : "Regular"}
                     </span>
                   </div>
                   <div className="flex gap-2">
-                    <button 
+                    <button
                       onClick={() => handleEdit(item)}
                       className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm font-semibold"
                     >
                       ✏️ แก้ไข
                     </button>
-                    <button 
+                    <button
                       onClick={() => handleDelete(item.id)}
                       className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 text-sm font-semibold"
                     >

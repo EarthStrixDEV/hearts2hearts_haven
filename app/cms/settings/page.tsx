@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { swalSuccess } from "@/app/cms/_utils/swal";
 
 interface Settings {
   siteName: string;
@@ -53,8 +54,8 @@ export default function CMSSettingsPage() {
 
   const handleSave = () => {
     setIsSaving(true);
-    setTimeout(() => {
-      alert("บันทึกการตั้งค่าสำเร็จ!");
+    setTimeout(async () => {
+      await swalSuccess("บันทึกการตั้งค่าสำเร็จ!");
       setIsSaving(false);
     }, 1000);
   };

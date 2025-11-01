@@ -4,6 +4,7 @@ import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { NewsArticle } from "@/app/types/news";
+import { swalError, swalSuccess, swalWarning } from "@/app/cms/_utils/swal";
 
 interface CMSNewsArticle extends NewsArticle {
   status: "draft" | "review" | "scheduled" | "published";
@@ -88,16 +89,16 @@ export default function CMSNewsEditor() {
             updatedAt: (article as any).updatedAt || article.publishedAt,
           });
         } else {
-          alert("ไม่พบบทความที่ต้องการแก้ไข");
+          await swalError("ไม่พบบทความที่ต้องการแก้ไข");
           router.push("/cms/news");
         }
       } else {
-        alert("ไม่สามารถโหลดข้อมูลบทความได้");
+        await swalError("ไม่สามารถโหลดข้อมูลบทความได้");
         router.push("/cms/news");
       }
     } catch (error) {
       console.error("Error loading article:", error);
-      alert("เกิดข้อผิดพลาดในการโหลดข้อมูล");
+      await swalError("เกิดข้อผิดพลาดในการโหลดข้อมูล");
       router.push("/cms/news");
     } finally {
       setIsLoading(false);
@@ -153,7 +154,7 @@ export default function CMSNewsEditor() {
 
   const handleSave = async (status?: "draft" | "review" | "scheduled" | "published") => {
     if (!formData.title || !formData.slug || !formData.excerpt || !formData.content) {
-      alert("กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน");
+      await swalWarning("กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน");
       return;
     }
 
@@ -196,14 +197,14 @@ export default function CMSNewsEditor() {
       });
 
       if (response.ok) {
-        alert("บันทึกบทความสำเร็จ!");
+        await swalSuccess("บันทึกบทความสำเร็จ!");
         router.push("/cms/news");
       } else {
-        alert("ไม่สามารถบันทึกบทความได้");
+        await swalError("ไม่สามารถบันทึกบทความได้");
       }
     } catch (error) {
       console.error("Error saving article:", error);
-      alert("เกิดข้อผิดพลาดในการบันทึก");
+      await swalError("เกิดข้อผิดพลาดในการบันทึก");
     } finally {
       setIsSaving(false);
     }

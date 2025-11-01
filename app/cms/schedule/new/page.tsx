@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { swalError, swalSuccess, swalWarning } from "@/app/cms/_utils/swal";
 
 interface ScheduleEvent {
   id: string;
@@ -39,7 +40,7 @@ export default function CreateSchedulePage() {
 
   const handleSave = async () => {
     if (!formData.title || !formData.date || !formData.time) {
-      alert("กรุณากรอกข้อมูลที่จำเป็น (ชื่อกิจกรรม, วันที่, และเวลา)");
+      await swalWarning("กรุณากรอกข้อมูลที่จำเป็น (ชื่อกิจกรรม, วันที่, และเวลา)");
       return;
     }
 
@@ -54,14 +55,14 @@ export default function CreateSchedulePage() {
       });
 
       if (response.ok) {
-        alert("เพิ่มกิจกรรมสำเร็จ!");
+        await swalSuccess("เพิ่มกิจกรรมสำเร็จ!");
         router.push("/cms/schedule");
       } else {
-        alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
       }
     } catch (error) {
       console.error('Error saving schedule event:', error);
-      alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+      await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
     } finally {
       setIsLoading(false);
     }

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { swalConfirm, swalError, toastError, toastSuccess } from "@/app/cms/_utils/swal";
 
 interface Member {
   id: string;
@@ -49,11 +50,11 @@ export default function CMSMembersPage() {
         setMembers(membersData);
       } else {
         console.error('Failed to load members');
-        alert('ไม่สามารถโหลดข้อมูลสมาชิกได้');
+        await toastError('ไม่สามารถโหลดข้อมูลสมาชิกได้');
       }
     } catch (error) {
       console.error('Error loading members:', error);
-      alert('เกิดข้อผิดพลาดในการโหลดข้อมูล');
+      await toastError('เกิดข้อผิดพลาดในการโหลดข้อมูล');
     } finally {
       setIsLoading(false);
     }
@@ -78,21 +79,21 @@ export default function CMSMembersPage() {
         if (response.ok) {
           // Reload members data
           await loadMembers();
-          alert("บันทึกข้อมูลสมาชิกสำเร็จ!");
+          await toastSuccess("บันทึกข้อมูลสมาชิกสำเร็จ!");
           setShowModal(false);
           setEditingMember(null);
         } else {
-          alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+          await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
         }
       } catch (error) {
         console.error('Error saving member:', error);
-        alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
       }
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบสมาชิกนี้?")) {
+    if (await swalConfirm("คุณแน่ใจหรือไม่ว่าต้องการลบสมาชิกนี้?", "ลบ")) {
       try {
         const response = await fetch(`/api/members?id=${id}`, {
           method: 'DELETE',
@@ -101,13 +102,13 @@ export default function CMSMembersPage() {
         if (response.ok) {
           // Reload members data
           await loadMembers();
-          alert("ลบสมาชิกสำเร็จ!");
+          await toastSuccess("ลบสมาชิกสำเร็จ!");
         } else {
-          alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+          await swalError("เกิดข้อผิดพลาดในการลบข้อมูล");
         }
       } catch (error) {
         console.error('Error deleting member:', error);
-        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+        await swalError("เกิดข้อผิดพลาดในการลบข้อมูล");
       }
     }
   };

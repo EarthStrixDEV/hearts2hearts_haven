@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { swalConfirm, swalError, toastError, toastSuccess } from "@/app/cms/_utils/swal";
 
 interface GalleryItem {
   id: string;
@@ -42,11 +43,11 @@ export default function CMSGalleryPage() {
         setItems(galleryData);
       } else {
         console.error('Failed to load gallery images');
-        alert('ไม่สามารถโหลดข้อมูลแกลเลอรีได้');
+        await toastError('ไม่สามารถโหลดข้อมูลแกลเลอรีได้');
       }
     } catch (error) {
       console.error('Error loading gallery images:', error);
-      alert('เกิดข้อผิดพลาดในการโหลดข้อมูล');
+      await toastError('เกิดข้อผิดพลาดในการโหลดข้อมูล');
     } finally {
       setIsLoading(false);
     }
@@ -71,21 +72,21 @@ export default function CMSGalleryPage() {
         if (response.ok) {
           // Reload gallery data
           await loadItems();
-          alert("บันทึกข้อมูลรูปภาพสำเร็จ!");
+          await toastSuccess("บันทึกข้อมูลรูปภาพสำเร็จ!");
           setShowModal(false);
           setEditingImage(null);
         } else {
-          alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+          await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
         }
       } catch (error) {
         console.error('Error saving image:', error);
-        alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        await swalError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
       }
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบรูปภาพนี้?")) {
+    if (await swalConfirm("คุณแน่ใจหรือไม่ว่าต้องการลบรูปภาพนี้?", "ลบ")) {
       try {
         const response = await fetch(`/api/gallery?id=${id}`, {
           method: 'DELETE',
@@ -94,13 +95,13 @@ export default function CMSGalleryPage() {
         if (response.ok) {
           // Reload gallery data
           await loadItems();
-          alert("ลบรูปภาพสำเร็จ!");
+          await toastSuccess("ลบรูปภาพสำเร็จ!");
         } else {
-          alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+          await swalError("เกิดข้อผิดพลาดในการลบข้อมูล");
         }
       } catch (error) {
         console.error('Error deleting image:', error);
-        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+        await swalError("เกิดข้อผิดพลาดในการลบข้อมูล");
       }
     }
   };

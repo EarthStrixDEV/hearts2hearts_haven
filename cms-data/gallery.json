@@ -72,18 +72,18 @@
     "member": "Carmen",
     "description": "",
     "emoji": "📸",
-    "imageUrl": "https://media.discordapp.net/attachments/1328056131020525600/1423301644392595598/SaveClip.App_558676956_17881204188396895_6476962095013153560_n.jpg?ex=6906b4b3&is=69056333&hm=4fe487281b934fe9d8b145ca83ccf397921b8673c027811ea655cb7093215455&=&format=webp&width=777&height=968",
+    "imageUrl": "https://media.discordapp.net/attachments/1328056131020525600/1423301644392595598/SaveClip.App_558676956_17881204188396895_6476962095013153560_n.jpg?ex=69080633&is=6906b4b3&hm=de4c8a3e1331d9887bc1f4382f90169b93f0f801e96c2d3792a8ca7d4c50fc02&=&format=webp&width=777&height=968",
     "uploadDate": "2025-11-01",
     "size": "0 MB"
   },
   {
     "id": "1761999214927",
-    "title": "Carmen Pretty Please a Ponytail",
+    "title": "Carmen Ponytail",
     "category": "Music Shows",
     "member": "Carmen",
     "description": "",
     "emoji": "📸",
-    "imageUrl": "https://media.discordapp.net/attachments/1328056131020525600/1421473698874916924/weverse_20250927142803.jpg?ex=6906a5cb&is=6905544b&hm=52cc70b5ad09a6917aa17b8e55d68ae826a4dcf06a3404d10511ad654e5560e7&=&format=webp&width=645&height=864",
+    "imageUrl": "https://media.discordapp.net/attachments/1328056131020525600/1430807449274945646/weverse_4-320579588.jpg?ex=6907a507&is=69065387&hm=b8dd33596e038202b6f0e4f647a789b7eb0681f5d1ec312d7cc12dbc34ad4762&=&format=webp&width=648&height=864",
     "uploadDate": "2025-11-01",
     "size": "0 MB"
   },
@@ -149,7 +149,7 @@
     "member": "Ian",
     "description": "",
     "emoji": "📸",
-    "imageUrl": "https://media.discordapp.net/attachments/1328060768012210266/1432214384670670899/G4O5y4CXEAAkbNJ.jpg?ex=6906d496&is=69058316&hm=9182edc235b616dd6e78cd056b8b8e609f167abee51ac06872f824bd156f1122&=&format=webp&width=576&height=864",
+    "imageUrl": "https://media.discordapp.net/attachments/1328060768012210266/1432844464392765470/G4XzRwdbIAAmytz.jpg?ex=6907cde5&is=69067c65&hm=5436faf3475a1ccd5ecdbb8e2a8be2ae4f664c1d04b3b62c4aa894b0ce738686&=&format=webp&width=1152&height=864",
     "uploadDate": "2025-11-01",
     "size": "0 MB"
   },
@@ -250,6 +250,28 @@
     "emoji": "📸",
     "imageUrl": "https://pbs.twimg.com/media/G4p6JTvbQAIZCdw?format=jpg&name=large",
     "uploadDate": "2025-11-01",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762019042450",
+    "title": "Ian & Carmen Duo Luv",
+    "category": "Music Shows",
+    "member": "Ian",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G4ryDimbQAU937a?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-01",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762059516169",
+    "title": "Carmen Sailor Cute",
+    "category": "Music Shows",
+    "member": "Carmen",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G4uK0pHbQAUspKZ?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-02",
     "size": "0 MB"
   }
 ]

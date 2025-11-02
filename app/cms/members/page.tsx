@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import DataTable, { Column } from "@/app/cms/_components/DataTable";
 import { swalConfirm, swalError, toastError, toastSuccess } from "@/app/cms/_utils/swal";
 
 interface Member {
@@ -113,6 +114,112 @@ export default function CMSMembersPage() {
     }
   };
 
+  const handleBulkDelete = async (ids: string[]) => {
+    try {
+      // Delete multiple members
+      await Promise.all(
+        ids.map(id => 
+          fetch(`/api/members?id=${id}`, { method: "DELETE" })
+        )
+      );
+      await loadMembers();
+    } catch (error) {
+      console.error("Error bulk deleting members:", error);
+      throw error;
+    }
+  };
+
+  const handleAdd = () => {
+    setEditingMember({
+      id: Date.now().toString(),
+      name: "",
+      koreanName: "",
+      position: "",
+      birthYear: 2000,
+      nationality: "",
+      traineeYears: "",
+      emoji: "🎤",
+      color: "from-pink-400 to-purple-400",
+      backstory: "",
+      facts: [],
+      quote: "",
+      imageUrl: "",
+      quickFact: "",
+      icon: "🎤",
+    });
+    setShowModal(true);
+  };
+
+  const columns: Column<Member>[] = [
+    {
+      key: "imageUrl",
+      label: "รูปภาพ",
+      width: "80px",
+      render: (_, member) => (
+        <div className="relative">
+          <Image
+            src={member.imageUrl}
+            alt={member.name}
+            width={60}
+            height={60}
+            className="w-15 h-15 rounded-full object-cover shadow-lg ring-2 ring-pink-100"
+            unoptimized
+          />
+          <div className="absolute -bottom-1 -right-1 bg-gradient-to-br from-pink-400 to-purple-400 text-white text-sm w-6 h-6 rounded-full flex items-center justify-center shadow-lg">
+            {member.icon}
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "name",
+      label: "ชื่อสมาชิก",
+      sortable: true,
+      render: (_, member) => (
+        <div>
+          <p className="font-semibold text-gray-900">{member.name}</p>
+          <p className="text-sm text-gray-500">{member.koreanName}</p>
+        </div>
+      ),
+    },
+    {
+      key: "position",
+      label: "ตำแหน่ง",
+      sortable: true,
+      render: (position) => (
+        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
+          {position}
+        </span>
+      ),
+    },
+    {
+      key: "birthYear",
+      label: "อายุ",
+      sortable: true,
+      render: (birthYear) => (
+        <span className="text-sm text-gray-600">
+          {new Date().getFullYear() - birthYear} ปี
+        </span>
+      ),
+    },
+    {
+      key: "nationality",
+      label: "สัญชาติ",
+      sortable: true,
+      render: (nationality) => (
+        <span className="text-sm text-gray-600">{nationality}</span>
+      ),
+    },
+    {
+      key: "traineeYears",
+      label: "ระยะเวลาฝึกหัด",
+      sortable: true,
+      render: (traineeYears) => (
+        <span className="text-sm text-gray-600">{traineeYears}</span>
+      ),
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -160,82 +267,23 @@ export default function CMSMembersPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">สมาชิกทั้งหมด</p>
-                <p className="text-2xl font-bold">{members.length}</p>
-              </div>
-              <div className="text-3xl">👭</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Members Grid */}
-        {isLoading ? (
-          <div className="text-center py-12">
-            <div className="text-6xl mb-4">⏳</div>
-            <p className="text-gray-600">กำลังโหลด...</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {members.map((member, index) => (
-              <motion.div
-                key={member.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow"
-              >
-                <div className="text-center">
-                  <div className="relative mb-4">
-                    <Image
-                      src={member.imageUrl}
-                      alt={member.name}
-                      width={120}
-                      height={120}
-                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg ring-4 ring-pink-100"
-                      unoptimized
-                    />
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-pink-400 to-purple-400 text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
-                      {member.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-2">
-                    {member.koreanName}
-                  </p>
-                  <p className="text-blue-600 font-semibold text-sm mb-3">
-                    {member.position}
-                  </p>
-                  <p className="text-gray-500 text-xs mb-4">
-                    Born {member.birthYear} • {member.nationality}
-                  </p>
-
-                  {/* Actions */}
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleEdit(member)}
-                      className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold"
-                    >
-                      ✏️ แก้ไข
-                    </button>
-                    <button
-                      onClick={() => handleDelete(member.id)}
-                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-semibold"
-                    >
-                      🗑️
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
+        <DataTable
+          data={members}
+          columns={columns}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          onBulkDelete={handleBulkDelete}
+          onAdd={handleAdd}
+          loading={isLoading}
+          title="จัดการสมาชิก (Members)"
+          icon="👭"
+          addButtonText="เพิ่มสมาชิกใหม่"
+          emptyMessage="ยังไม่มีสมาชิก"
+          emptyIcon="👥"
+          searchPlaceholder="ค้นหาสมาชิก..."
+          getItemId={(member) => member.id}
+          searchFields={["name", "koreanName", "position", "nationality"]}
+        />
       </div>
 
       {/* Edit Modal */}

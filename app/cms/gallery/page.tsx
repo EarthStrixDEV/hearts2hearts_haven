@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import DataTable, { Column } from "@/app/cms/_components/DataTable";
 import { swalConfirm, swalError, toastError, toastSuccess } from "@/app/cms/_utils/swal";
 
 interface GalleryItem {
@@ -106,6 +107,110 @@ export default function CMSGalleryPage() {
     }
   };
 
+  const handleBulkDelete = async (ids: string[]) => {
+    try {
+      // Delete multiple gallery items
+      await Promise.all(
+        ids.map(id => 
+          fetch(`/api/gallery?id=${id}`, { method: "DELETE" })
+        )
+      );
+      await loadItems();
+    } catch (error) {
+      console.error("Error bulk deleting gallery items:", error);
+      throw error;
+    }
+  };
+
+  const handleAdd = () => {
+    setEditingImage({
+      id: Date.now().toString(),
+      title: "",
+      category: "Teasers",
+      member: null,
+      description: "",
+      emoji: "📸",
+      imageUrl: "",
+      uploadDate: new Date().toISOString().split('T')[0],
+      size: "0 MB",
+    });
+    setShowModal(true);
+  };
+
+  const columns: Column<GalleryItem>[] = [
+    {
+      key: "imageUrl",
+      label: "รูปภาพ",
+      width: "80px",
+      render: (_, item) => (
+        <Image
+          src={item.imageUrl}
+          alt={item.title}
+          width={60}
+          height={45}
+          className="w-15 h-11 object-cover rounded-lg shadow-sm"
+          unoptimized
+        />
+      ),
+    },
+    {
+      key: "title",
+      label: "ชื่อรูปภาพ",
+      sortable: true,
+      render: (_, item) => (
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-lg">{item.emoji}</span>
+            <p className="font-semibold text-gray-900">{item.title}</p>
+          </div>
+          <p className="text-sm text-gray-500">{item.description}</p>
+        </div>
+      ),
+    },
+    {
+      key: "category",
+      label: "หมวดหมู่",
+      sortable: true,
+      render: (category) => (
+        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
+          {category}
+        </span>
+      ),
+    },
+    {
+      key: "member",
+      label: "สมาชิก",
+      sortable: true,
+      render: (member) => (
+        member ? (
+          <span className="px-2 py-1 bg-pink-100 text-pink-800 rounded-full text-xs font-semibold">
+            {member}
+          </span>
+        ) : (
+          <span className="text-gray-400 text-xs">-</span>
+        )
+      ),
+    },
+    {
+      key: "uploadDate",
+      label: "วันที่อัปโหลด",
+      sortable: true,
+      render: (date) => (
+        <span className="text-sm text-gray-600">
+          {new Date(date).toLocaleDateString("th-TH")}
+        </span>
+      ),
+    },
+    {
+      key: "size",
+      label: "ขนาดไฟล์",
+      sortable: true,
+      render: (size) => (
+        <span className="text-sm text-gray-600">{size}</span>
+      ),
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <header className="bg-white/80 backdrop-blur-md shadow-lg border-b border-white/20 sticky top-0 z-40">
@@ -160,158 +265,23 @@ export default function CMSGalleryPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white text-lg">
-                📸
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{items.length}</p>
-                <p className="text-sm text-gray-600">รูปภาพทั้งหมด</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-lg">
-                🎭
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{new Set(items.map(item => item.category)).size}</p>
-                <p className="text-sm text-gray-600">หมวดหมู่</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center text-white text-lg">
-                👥
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{items.filter(item => item.member).length}</p>
-                <p className="text-sm text-gray-600">รูปสมาชิก</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center text-white text-lg">
-                📅
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{items.filter(item => item.uploadDate === new Date().toISOString().split('T')[0]).length}</p>
-                <p className="text-sm text-gray-600">วันนี้</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {isLoading ? (
-          <div className="text-center py-20">
-            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center text-4xl mb-6 mx-auto animate-pulse">
-              ⏳
-            </div>
-            <p className="text-gray-600 text-lg">กำลังโหลดแกลเลอรี...</p>
-          </div>
-        ) : items.length === 0 ? (
-          <div className="text-center py-20">
-            <div className="w-20 h-20 bg-gradient-to-br from-gray-400 to-gray-500 rounded-3xl flex items-center justify-center text-4xl mb-6 mx-auto">
-              📸
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">ยังไม่มีรูปภาพ</h3>
-            <p className="text-gray-600 mb-6">เริ่มต้นสร้างแกลเลอรีของคุณกันเลย</p>
-            <button 
-              onClick={() => {
-                setEditingImage({
-                  id: Date.now().toString(),
-                  title: "",
-                  category: "Teasers",
-                  member: null,
-                  description: "",
-                  emoji: "📸",
-                  imageUrl: "",
-                  uploadDate: new Date().toISOString().split('T')[0],
-                  size: "0 MB",
-                });
-                setShowModal(true);
-              }}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 font-semibold"
-            >
-              + อัปโหลดรูปภาพแรก
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {items.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
-                className="group cursor-pointer"
-              >
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/20 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      unoptimized
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-semibold text-gray-700">
-                        {item.category}
-                      </span>
-                    </div>
-                    {item.member && (
-                      <div className="absolute top-3 right-3">
-                        <span className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-2 py-1 rounded-lg text-xs font-semibold">
-                          {item.member}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-lg">{item.emoji}</span>
-                      <h3 className="text-sm font-bold text-gray-900 truncate flex-1">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500 mb-4">
-                      <span>📅 {new Date(item.uploadDate).toLocaleDateString("th-TH")}</span>
-                      <span>•</span>
-                      <span>📦 {item.size}</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <button 
-                        onClick={() => handleEdit(item)}
-                        className="flex-1 px-3 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 text-xs font-semibold transition-all duration-300 flex items-center justify-center gap-1"
-                      >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
-                        แก้ไข
-                      </button>
-                      <button 
-                        onClick={() => handleDelete(item.id)}
-                        className="px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl hover:from-red-600 hover:to-red-700 text-xs font-semibold transition-all duration-300 flex items-center justify-center"
-                      >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
+        <DataTable
+          data={items}
+          columns={columns}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          onBulkDelete={handleBulkDelete}
+          onAdd={handleAdd}
+          loading={isLoading}
+          title="จัดการแกลเลอรี"
+          icon="📸"
+          addButtonText="อัปโหลดรูปภาพ"
+          emptyMessage="ยังไม่มีรูปภาพ"
+          emptyIcon="📸"
+          searchPlaceholder="ค้นหารูปภาพ..."
+          getItemId={(item) => item.id}
+          searchFields={["title", "category", "member", "description"]}
+        />
       </div>
 
       {/* Edit Modal */}

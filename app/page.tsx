@@ -32,10 +32,22 @@ interface Member {
   quickFact: string;
 }
 
+interface CarouselImage {
+  id: string;
+  title: string;
+  imageUrl: string;
+  description: string;
+  category: string;
+  order: number;
+  isActive: boolean;
+}
+
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const [membersData, setMembersData] = useState<Member[]>([]);
+  const [carouselImages, setCarouselImages] = useState<CarouselImage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isCarouselLoading, setIsCarouselLoading] = useState(true);
 
   // Fetch members data from API
   useEffect(() => {
@@ -68,6 +80,27 @@ export default function Home() {
     };
 
     fetchMembers();
+  }, []);
+
+  // Fetch carousel images from API
+  useEffect(() => {
+    const fetchCarouselImages = async () => {
+      try {
+        const response = await fetch('/api/carousel');
+        if (response.ok) {
+          const data = await response.json();
+          setCarouselImages(data);
+        } else {
+          console.error('Failed to load carousel images');
+        }
+      } catch (error) {
+        console.error('Error loading carousel images:', error);
+      } finally {
+        setIsCarouselLoading(false);
+      }
+    };
+
+    fetchCarouselImages();
   }, []);
 
   // Get member of the day based on date (computed once on mount)
@@ -486,190 +519,59 @@ export default function Home() {
           </p>
 
           <div className="max-w-5xl mx-auto">
-            <Swiper
-              modules={[Autoplay, Pagination, Navigation, EffectFade]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: false,
-              }}
-              loop={true}
-              className="rounded-2xl shadow-2xl overflow-hidden"
-            >
-              {/* 10 Image Slides */}
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/GuM79fna4AAheyd?format=jpg&name=4096x4096"
-                    alt="H2H Performance 1"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Style Moment 🎤
-                    </h3>
-                  </div>
+            {isCarouselLoading ? (
+              <div className="h-[500px] bg-gray-200 rounded-2xl flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4 animate-pulse">⏳</div>
+                  <p className="text-gray-600">กำลังโหลดรูปภาพ...</p>
                 </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/G2ZpJ76b0AAVEvj?format=jpg&name=4096x4096"
-                    alt="H2H Performance 2"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Stage Vibes 💕
-                    </h3>
-                  </div>
+              </div>
+            ) : carouselImages.length > 0 ? (
+              <Swiper
+                modules={[Autoplay, Pagination, Navigation, EffectFade]}
+                spaceBetween={30}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                className="rounded-2xl shadow-2xl overflow-hidden"
+              >
+                {carouselImages.map((image) => (
+                  <SwiperSlide key={image.id}>
+                    <div className="relative h-[500px] w-full">
+                      <Image
+                        src={image.imageUrl}
+                        alt={image.title}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
+                        <h3 className="text-white text-2xl font-bold">
+                          {image.title}
+                        </h3>
+                        {image.description && (
+                          <p className="text-white/90 text-sm mt-2">
+                            {image.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <div className="h-[500px] bg-gray-100 rounded-2xl flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">🖼️</div>
+                  <p className="text-gray-600">ไม่มีรูปภาพใน Gallery</p>
                 </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/G2QFkMFbwAEq-kh?format=jpg&name=4096x4096"
-                    alt="H2H Performance 3"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Pretty Please Moment ✨
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/G3TpdgjbgAAObnB?format=jpg&name=4096x4096"
-                    alt="H2H Performance 4"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Focus Moment 🎸
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/G3qWYx3WoAAnhAm?format=jpg&name=large"
-                    alt="H2H Performance 5"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Heart Chase 💃
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://www.nme.com/wp-content/uploads/2025/02/hearts2hearts-sm-entertainment-new-girl-group-debut-the-chase-single.jpg"
-                    alt="H2H Performance 6"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      The Chase Vibe 📸
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://jigeum.media/wp-content/uploads/2025/07/GumH0RrW8AAyzec-e1753420976792.jpg"
-                    alt="H2H Performance 7"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Awards Night 🏆
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/G3Gm90Nb0AANTN2?format=jpg&name=large"
-                    alt="H2H Performance 8"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Fan Meeting Day 🤗
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/G3eCEQ5XMAAegeW?format=jpg&name=4096x4096"
-                    alt="H2H Performance 9"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Focus Pre-release 🎬
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="relative h-[500px] w-full">
-                  <Image
-                    src="https://pbs.twimg.com/media/G3yu1btXEAEc61x?format=jpg&name=large"
-                    alt="H2H Performance 10"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
-                    <h3 className="text-white text-2xl font-bold">
-                      Focus Scene 🎵
-                    </h3>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+              </div>
+            )}
           </div>
         </div>
       </section>

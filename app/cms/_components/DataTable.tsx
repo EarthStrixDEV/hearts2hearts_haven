@@ -12,7 +12,7 @@ export interface Column<T> {
 }
 
 export interface DataTableProps<T> {
-  data: T[];
+  data: T[] | undefined | null;
   columns: Column<T>[];
   onEdit?: (item: T) => void;
   onDelete?: (id: string) => Promise<void>;
@@ -46,6 +46,18 @@ export default function DataTable<T>({
   getItemId,
   searchFields = [],
 }: DataTableProps<T>) {
+  // Validate required props
+  if (!title || !icon || !getItemId) {
+    console.error(
+      "DataTable: Missing required props (title, icon, or getItemId)"
+    );
+    return (
+      <div className="text-center py-12">
+        <div className="text-6xl mb-4">❌</div>
+        <p className="text-red-600">DataTable configuration error</p>
+      </div>
+    );
+  }
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState<{
@@ -54,15 +66,21 @@ export default function DataTable<T>({
   } | null>(null);
   const [showBulkActions, setShowBulkActions] = useState(false);
 
+  // Ensure data is an array and handle null/undefined
+  const safeData = Array.isArray(data) ? data : [];
+
   // Filter data based on search term
-  const filteredData = data.filter((item) => {
-    if (!searchTerm) return true;
-    
+  const filteredData = safeData.filter((item) => {
+    if (!item || !searchTerm) return true;
+
     const searchLower = searchTerm.toLowerCase();
-    
+
     // Search in specified fields or all string fields
-    const fieldsToSearch = searchFields.length > 0 ? searchFields : Object.keys(item) as (keyof T)[];
-    
+    const fieldsToSearch =
+      searchFields.length > 0
+        ? searchFields
+        : (Object.keys(item) as (keyof T)[]);
+
     return fieldsToSearch.some((field) => {
       const value = item[field];
       if (typeof value === "string") {
@@ -90,7 +108,7 @@ export default function DataTable<T>({
 
   // Helper function to get nested values
   const getNestedValue = (obj: any, path: string) => {
-    return path.split('.').reduce((current, key) => current?.[key], obj);
+    return path.split(".").reduce((current, key) => current?.[key], obj);
   };
 
   // Handle sort
@@ -111,7 +129,19 @@ export default function DataTable<T>({
     if (selectedItems.size === sortedData.length) {
       setSelectedItems(new Set());
     } else {
-      setSelectedItems(new Set(sortedData.map(getItemId)));
+      const validIds = sortedData
+        .filter((item) => item != null)
+        .map((item) => {
+          try {
+            return getItemId(item);
+          } catch (error) {
+            console.error("Error getting item ID for select all:", error);
+            return null;
+          }
+        })
+        .filter((id) => id != null) as string[];
+
+      setSelectedItems(new Set(validIds));
     }
   };
 
@@ -182,8 +212,9 @@ export default function DataTable<T>({
           <div>
             <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
             <p className="text-sm text-gray-600">
-              ทั้งหมด {data.length} รายการ
-              {filteredData.length !== data.length && ` • แสดง ${filteredData.length} รายการ`}
+              ทั้งหมด {safeData.length} รายการ
+              {filteredData.length !== safeData.length &&
+                ` • แสดง ${filteredData.length} รายการ`}
             </p>
           </div>
         </div>
@@ -286,9 +317,13 @@ export default function DataTable<T>({
           <div className="w-20 h-20 bg-gradient-to-br from-gray-400 to-gray-500 rounded-3xl flex items-center justify-center text-4xl mb-6 mx-auto">
             {emptyIcon}
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">{emptyMessage}</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
+            {emptyMessage}
+          </h3>
           <p className="text-gray-600 mb-6">
-            {searchTerm ? "ไม่พบข้อมูลที่ตรงกับการค้นหา" : "เริ่มต้นเพิ่มข้อมูลกันเลย"}
+            {searchTerm
+              ? "ไม่พบข้อมูลที่ตรงกับการค้นหา"
+              : "เริ่มต้นเพิ่มข้อมูลกันเลย"}
           </p>
           {onAdd && !searchTerm && (
             <button
@@ -308,7 +343,10 @@ export default function DataTable<T>({
                   <th className="px-6 py-4 text-left">
                     <input
                       type="checkbox"
-                      checked={selectedItems.size === sortedData.length && sortedData.length > 0}
+                      checked={
+                        selectedItems.size === sortedData.length &&
+                        sortedData.length > 0
+                      }
                       onChange={handleSelectAll}
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                     />
@@ -317,10 +355,14 @@ export default function DataTable<T>({
                     <th
                       key={String(column.key)}
                       className={`px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider ${
-                        column.sortable ? "cursor-pointer hover:bg-gray-100" : ""
+                        column.sortable
+                          ? "cursor-pointer hover:bg-gray-100"
+                          : ""
                       }`}
                       style={{ width: column.width }}
-                      onClick={() => column.sortable && handleSort(String(column.key))}
+                      onClick={() =>
+                        column.sortable && handleSort(String(column.key))
+                      }
                     >
                       <div className="flex items-center gap-2">
                         {column.label}
@@ -355,9 +397,18 @@ export default function DataTable<T>({
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {sortedData.map((item, index) => {
-                  const itemId = getItemId(item);
+                  if (!item) return null;
+
+                  let itemId: string;
+                  try {
+                    itemId = getItemId(item);
+                  } catch (error) {
+                    console.error("Error getting item ID:", error);
+                    itemId = `item-${index}`;
+                  }
+
                   const isSelected = selectedItems.has(itemId);
-                  
+
                   return (
                     <motion.tr
                       key={itemId}
@@ -379,8 +430,13 @@ export default function DataTable<T>({
                       {columns.map((column) => (
                         <td key={String(column.key)} className="px-6 py-4">
                           {column.render
-                            ? column.render(getNestedValue(item, String(column.key)), item)
-                            : String(getNestedValue(item, String(column.key)) || "")}
+                            ? column.render(
+                                getNestedValue(item, String(column.key)),
+                                item
+                              )
+                            : String(
+                                getNestedValue(item, String(column.key)) || ""
+                              )}
                         </td>
                       ))}
                       <td className="px-6 py-4 text-right">

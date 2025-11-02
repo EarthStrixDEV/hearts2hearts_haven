@@ -310,5 +310,18 @@
     "description": "Hilarious variety show appearance! Ian's aegyo and Stella's NPC impressions steal the show! 😂",
     "emoji": "📺",
     "featured": false
+  },
+  {
+    "id": "1762072275338",
+    "title": "FOCUS - SBS",
+    "artist": "Hearts2Hearts",
+    "type": "Music Video",
+    "youtubeId": "mA8xrIegKNU",
+    "releaseDate": "2025-11-02",
+    "views": "5K+",
+    "thumbnail": "https://img.youtube.com/vi/mA8xrIegKNU/maxresdefault.jpg",
+    "description": "S2U hearts are racing as the girls nail killer choreo and soaring vocals in this must-watch performance!",
+    "emoji": "🎵",
+    "featured": false
   }
 ]

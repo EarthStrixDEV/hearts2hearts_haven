@@ -1,0 +1,134 @@
+[
+  {
+    "id": "1",
+    "title": "Style Moment 🎤",
+    "imageUrl": "https://pbs.twimg.com/media/GuM79fna4AAheyd?format=jpg&name=4096x4096",
+    "description": "Hearts2Hearts performing their hit song Style with stunning choreography",
+    "category": "Performance",
+    "order": 1,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:00:00Z",
+    "updatedAt": "2025-11-02T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "title": "Stage Vibes 💕",
+    "imageUrl": "https://pbs.twimg.com/media/G2ZpJ76b0AAVEvj?format=jpg&name=4096x4096",
+    "description": "Amazing stage presence and energy from H2H members",
+    "category": "Performance",
+    "order": 2,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:01:00Z",
+    "updatedAt": "2025-11-02T10:01:00Z"
+  },
+  {
+    "id": "3",
+    "title": "Pretty Please Moment ✨",
+    "imageUrl": "https://pbs.twimg.com/media/G2QFkMFbwAEq-kh?format=jpg&name=4096x4096",
+    "description": "Beautiful performance of Pretty Please with elegant styling",
+    "category": "Performance",
+    "order": 3,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:02:00Z",
+    "updatedAt": "2025-11-02T10:02:00Z"
+  },
+  {
+    "id": "4",
+    "title": "Focus Moment 🎸",
+    "imageUrl": "https://pbs.twimg.com/media/G3TpdgjbgAAObnB?format=jpg&name=4096x4096",
+    "description": "Intense Focus performance with powerful vocals and dance",
+    "category": "Performance",
+    "order": 4,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:03:00Z",
+    "updatedAt": "2025-11-02T10:03:00Z"
+  },
+  {
+    "id": "5",
+    "title": "Heart Chase 💃",
+    "imageUrl": "https://pbs.twimg.com/media/G3qWYx3WoAAnhAm?format=jpg&name=large",
+    "description": "Dynamic choreography from The Chase era",
+    "category": "Performance",
+    "order": 5,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:04:00Z",
+    "updatedAt": "2025-11-02T10:04:00Z"
+  },
+  {
+    "id": "6",
+    "title": "The Chase Vibe 📸",
+    "imageUrl": "https://www.nme.com/wp-content/uploads/2025/02/hearts2hearts-sm-entertainment-new-girl-group-debut-the-chase-single.jpg",
+    "description": "Official promotional photo from The Chase single release",
+    "category": "Promotional",
+    "order": 6,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:05:00Z",
+    "updatedAt": "2025-11-02T10:05:00Z"
+  },
+  {
+    "id": "7",
+    "title": "Awards Night 🏆",
+    "imageUrl": "https://jigeum.media/wp-content/uploads/2025/07/GumH0RrW8AAyzec-e1753420976792.jpg",
+    "description": "H2H at prestigious awards ceremony looking stunning",
+    "category": "Event",
+    "order": 7,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:06:00Z",
+    "updatedAt": "2025-11-02T10:06:00Z"
+  },
+  {
+    "id": "8",
+    "title": "Fan Meeting Day 🤗",
+    "imageUrl": "https://pbs.twimg.com/media/G3Gm90Nb0AANTN2?format=jpg&name=large",
+    "description": "Special moments with S2U fans during fan meeting event",
+    "category": "Fan Event",
+    "order": 8,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:07:00Z",
+    "updatedAt": "2025-11-02T10:07:00Z"
+  },
+  {
+    "id": "9",
+    "title": "Focus Pre-release 🎬",
+    "imageUrl": "https://pbs.twimg.com/media/G3eCEQ5XMAAegeW?format=jpg&name=4096x4096",
+    "description": "Behind the scenes from Focus music video production",
+    "category": "Behind the Scenes",
+    "order": 9,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:08:00Z",
+    "updatedAt": "2025-11-02T10:08:00Z"
+  },
+  {
+    "id": "10",
+    "title": "Focus Scene 🎵",
+    "imageUrl": "https://pbs.twimg.com/media/G3yu1btXEAEc61x?format=jpg&name=large",
+    "description": "Iconic scene from Focus music video with beautiful cinematography",
+    "category": "Music Video",
+    "order": 10,
+    "isActive": true,
+    "createdAt": "2025-11-02T10:09:00Z",
+    "updatedAt": "2025-11-02T10:09:00Z"
+  },
+  {
+    "id": "1762074846151",
+    "title": "Three cute childhood",
+    "imageUrl": "https://pbs.twimg.com/media/G4d5SP9a8AEaQlq?format=jpg&name=large",
+    "description": "Lovely Carmen ,Stella ,Ian childhood style",
+    "category": "Event",
+    "order": 11,
+    "isActive": true,
+    "createdAt": "2025-11-02T09:14:06.151Z",
+    "updatedAt": "2025-11-02T09:14:06.151Z"
+  },
+  {
+    "id": "1762075021145",
+    "title": "Music Core",
+    "imageUrl": "https://imbbsfile.imbc.com/entertain07/musiccore_photo/202510/musiccore_photo251029171220mbckpop10.png",
+    "description": "Focus performance Show in Music Core",
+    "category": "Performance",
+    "order": 12,
+    "isActive": true,
+    "createdAt": "2025-11-02T09:17:01.145Z",
+    "updatedAt": "2025-11-02T09:17:25.657Z"
+  }
+]

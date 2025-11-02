@@ -76,6 +76,12 @@ export default function CMSDashboard() {
       color: "from-pink-500 to-pink-600",
     },
     {
+      title: "จัดการ Carousel",
+      icon: "🎠",
+      href: "/cms/carousel",
+      color: "from-indigo-500 to-indigo-600",
+    },
+    {
       title: "จัดการแกลเลอรี",
       icon: "📸",
       href: "/cms/gallery",
@@ -86,12 +92,6 @@ export default function CMSDashboard() {
       icon: "📅",
       href: "/cms/schedule/new",
       color: "from-orange-500 to-orange-600",
-    },
-    {
-      title: "ตั้งค่าเว็บไซต์",
-      icon: "⚙️",
-      href: "/cms/settings",
-      color: "from-gray-500 to-gray-600",
     },
   ];
 
@@ -117,6 +117,13 @@ export default function CMSDashboard() {
       count: stats.totalMusic,
       href: "/cms/music",
       color: "pink",
+    },
+    {
+      name: "Gallery Carousel",
+      icon: "🎠",
+      count: 10,
+      href: "/cms/carousel",
+      color: "indigo",
     },
     {
       name: "Schedule",

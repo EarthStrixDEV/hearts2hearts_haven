@@ -1,0 +1,81 @@
+[
+  {
+    "id": "lyr_focus_kr",
+    "trackId": "trk_focus",
+    "lang": "ko",
+    "lines": [
+      {"t": 12.50, "l": "시선을 내게만 맞춰 줘"},
+      {"t": 16.20, "l": "다른 건 신경 쓰지 마"},
+      {"t": 20.00, "l": "지금 이 순간만 집중해"},
+      {"t": 23.80, "l": "우리 둘만의 세상"},
+      {"t": 27.50, "l": "Focus on me, focus on me"},
+      {"t": 31.20, "l": "네 마음을 보여줘"},
+      {"t": 35.00, "l": "Focus on me, focus on me"},
+      {"t": 38.80, "l": "지금 이 순간을"}
+    ]
+  },
+  {
+    "id": "lyr_focus_en",
+    "trackId": "trk_focus",
+    "lang": "en",
+    "lines": [
+      {"t": 12.50, "l": "Keep your eyes on me only"},
+      {"t": 16.20, "l": "Don't worry about anything else"},
+      {"t": 20.00, "l": "Just focus on this moment"},
+      {"t": 23.80, "l": "Our world for two"},
+      {"t": 27.50, "l": "Focus on me, focus on me"},
+      {"t": 31.20, "l": "Show me your heart"},
+      {"t": 35.00, "l": "Focus on me, focus on me"},
+      {"t": 38.80, "l": "Right now, this moment"}
+    ]
+  },
+  {
+    "id": "lyr_focus_th",
+    "trackId": "trk_focus",
+    "lang": "th",
+    "lines": [
+      {"t": 12.50, "l": "มองแค่ฉันคนเดียว"},
+      {"t": 16.20, "l": "ไม่ต้องสนใจอะไรอื่น"},
+      {"t": 20.00, "l": "โฟกัสแค่ช่วงเวลานี้"},
+      {"t": 23.80, "l": "โลกของเราสองคน"},
+      {"t": 27.50, "l": "Focus on me, focus on me"},
+      {"t": 31.20, "l": "แสดงหัวใจให้ฉันเห็น"},
+      {"t": 35.00, "l": "Focus on me, focus on me"},
+      {"t": 38.80, "l": "ตอนนี้ ช่วงเวลานี้"}
+    ]
+  },
+  {
+    "id": "lyr_heartbeat_kr",
+    "trackId": "trk_heartbeat",
+    "lang": "ko",
+    "lines": [
+      {"t": 10.00, "l": "내 심장이 뛰어"},
+      {"t": 15.00, "l": "너를 볼 때마다"},
+      {"t": 20.00, "l": "이 느낌을 멈출 수 없어"},
+      {"t": 25.00, "l": "Heartbeat, heartbeat"}
+    ]
+  },
+  {
+    "id": "lyr_heartbeat_en",
+    "trackId": "trk_heartbeat",
+    "lang": "en",
+    "lines": [
+      {"t": 10.00, "l": "My heart is beating"},
+      {"t": 15.00, "l": "Every time I see you"},
+      {"t": 20.00, "l": "Can't stop this feeling"},
+      {"t": 25.00, "l": "Heartbeat, heartbeat"}
+    ]
+  },
+  {
+    "id": "lyr_heartbeat_th",
+    "trackId": "trk_heartbeat",
+    "lang": "th",
+    "lines": [
+      {"t": 10.00, "l": "หัวใจฉันเต้นแรง"},
+      {"t": 15.00, "l": "ทุกครั้งที่เห็นเธอ"},
+      {"t": 20.00, "l": "หยุดความรู้สึกนี้ไม่ได้"},
+      {"t": 25.00, "l": "Heartbeat, heartbeat"}
+    ]
+  }
+]
+

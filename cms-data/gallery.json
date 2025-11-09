@@ -66,28 +66,6 @@
     "size": "0 MB"
   },
   {
-    "id": "1761999154330",
-    "title": "Carmen With Her Star",
-    "category": "Predebut",
-    "member": "Carmen",
-    "description": "",
-    "emoji": "📸",
-    "imageUrl": "https://media.discordapp.net/attachments/1328056131020525600/1423301644392595598/SaveClip.App_558676956_17881204188396895_6476962095013153560_n.jpg?ex=69080633&is=6906b4b3&hm=de4c8a3e1331d9887bc1f4382f90169b93f0f801e96c2d3792a8ca7d4c50fc02&=&format=webp&width=777&height=968",
-    "uploadDate": "2025-11-01",
-    "size": "0 MB"
-  },
-  {
-    "id": "1761999214927",
-    "title": "Carmen Ponytail",
-    "category": "Music Shows",
-    "member": "Carmen",
-    "description": "",
-    "emoji": "📸",
-    "imageUrl": "https://media.discordapp.net/attachments/1328056131020525600/1430807449274945646/weverse_4-320579588.jpg?ex=6907a507&is=69065387&hm=b8dd33596e038202b6f0e4f647a789b7eb0681f5d1ec312d7cc12dbc34ad4762&=&format=webp&width=648&height=864",
-    "uploadDate": "2025-11-01",
-    "size": "0 MB"
-  },
-  {
     "id": "1761999279306",
     "title": "Yeon music show",
     "category": "Music Shows",
@@ -112,7 +90,7 @@
   {
     "id": "1761999537713",
     "title": "Yeon APEX Music Festa",
-    "category": "Teasers",
+    "category": "Music Shows",
     "member": "Ye-on",
     "description": "",
     "emoji": "📸",
@@ -139,17 +117,6 @@
     "description": "",
     "emoji": "📸",
     "imageUrl": "https://media.discordapp.net/attachments/1328060768012210266/1433087604533891233/G4bh94iaYAAPDVw.png?ex=6906b616&is=69056496&hm=e5eb95b150bd8391f2d9495d12e40fbbbba19190007f94759a0697ee7bd2063e&=&format=webp&quality=lossless&width=1296&height=864",
-    "uploadDate": "2025-11-01",
-    "size": "0 MB"
-  },
-  {
-    "id": "1762000393717",
-    "title": "Ian Minirecord Offline Fansign",
-    "category": "Predebut",
-    "member": "Ian",
-    "description": "",
-    "emoji": "📸",
-    "imageUrl": "https://media.discordapp.net/attachments/1328060768012210266/1432844464392765470/G4XzRwdbIAAmytz.jpg?ex=6907cde5&is=69067c65&hm=5436faf3475a1ccd5ecdbb8e2a8be2ae4f664c1d04b3b62c4aa894b0ce738686&=&format=webp&width=1152&height=864",
     "uploadDate": "2025-11-01",
     "size": "0 MB"
   },
@@ -272,6 +239,259 @@
     "emoji": "📸",
     "imageUrl": "https://pbs.twimg.com/media/G4uK0pHbQAUspKZ?format=jpg&name=4096x4096",
     "uploadDate": "2025-11-02",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762607027518",
+    "title": "Carmen durante a Pop-Up Store, no Wanda Plaza Guangzhou.",
+    "category": "Music Shows",
+    "member": "Carmen",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5J7Bx2WgAAgmpD?format=jpg&name=large",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762607066054",
+    "title": "Carmen Chinese Princess",
+    "category": "Music Shows",
+    "member": "Carmen",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KTStPboAAJBfM?format=jpg&name=large",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608627543",
+    "title": "Carmen LUV Stella",
+    "category": "Music Shows",
+    "member": "Carmen",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5NHkPwaEAAkk48?format=jpg&name=medium",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608665870",
+    "title": "Baby Ian",
+    "category": "Music Shows",
+    "member": "Ian",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5ORGjta8AAeAei?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608686438",
+    "title": "Jiwoo Huge Hair Bow",
+    "category": "Music Shows",
+    "member": "Jiwoo",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5JuJwNboAApZlu?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608772336",
+    "title": "Ian guitarist",
+    "category": "Music Shows",
+    "member": "Ian",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5NrT4MaUAAh6ll?format=jpg&name=large",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608805984",
+    "title": "Yuha lock Holmes",
+    "category": "Music Shows",
+    "member": "Yuha",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KOuvLbgAII8VI?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608926019",
+    "title": "Stella wanna punch you",
+    "category": "Music Shows",
+    "member": "Stella",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5NLEx6aQAA8y_3?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608964939",
+    "title": "Ian Boxer",
+    "category": "Music Shows",
+    "member": "Ian",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KwNNjawAAoLl-?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762608995157",
+    "title": "A-Na Winter",
+    "category": "Music Shows",
+    "member": "A-na",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5NeUWybIAEd03s?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609033930",
+    "title": "Juun Volley Smasher",
+    "category": "Music Shows",
+    "member": "Juun",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KUjtYaQAAHsNS?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609071074",
+    "title": "H2H Double Rapper",
+    "category": "Music Shows",
+    "member": "Juun",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KUjtYaQAEzVA_?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609239298",
+    "title": "Ian 1st class",
+    "category": "Music Shows",
+    "member": "Ian",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KC31gbEAAnqSR?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609338291",
+    "title": "Jiwoo Otaku",
+    "category": "Music Shows",
+    "member": "Jiwoo",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5J0FDLawAArEAh?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609365073",
+    "title": "Jiwoo with her Pet",
+    "category": "Music Shows",
+    "member": "Jiwoo",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5NOhxFbIAMoRTZ?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609396058",
+    "title": "Juun Chinese Princess",
+    "category": "Music Shows",
+    "member": "Juun",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KEz90aAAE4Imf?format=jpg&name=large",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609454393",
+    "title": "Yuha punching!!",
+    "category": "Music Shows",
+    "member": "Yuha",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KNTkuacAAUrrT?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609493822",
+    "title": "Baby Jiwoo",
+    "category": "Music Shows",
+    "member": "Jiwoo",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5J9y_7bQAAOAxP?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609524328",
+    "title": "A-Na Guitarist",
+    "category": "Music Shows",
+    "member": "A-na",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5KFLSTbsAAyMu7?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609605966",
+    "title": "Baby Ye-on",
+    "category": "Music Shows",
+    "member": "Ye-on",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5EsbGfbIAITqEG?format=jpg&name=large",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609669799",
+    "title": "Juun Rainy",
+    "category": "Music Shows",
+    "member": "Juun",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5C9JOJaMAAF5OT?format=jpg&name=large",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609737650",
+    "title": "Carmen Diamond Princess",
+    "category": "Music Shows",
+    "member": "Carmen",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5EHaHDa4AA9_xV?format=jpg&name=large",
+    "uploadDate": "2025-11-08",
+    "size": "0 MB"
+  },
+  {
+    "id": "1762609815632",
+    "title": "Carmen Painter",
+    "category": "Music Shows",
+    "member": "Carmen",
+    "description": "",
+    "emoji": "📸",
+    "imageUrl": "https://pbs.twimg.com/media/G5Ouda3aUAAFedR?format=jpg&name=4096x4096",
+    "uploadDate": "2025-11-08",
     "size": "0 MB"
   }
 ]

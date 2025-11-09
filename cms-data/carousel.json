@@ -130,5 +130,27 @@
     "isActive": true,
     "createdAt": "2025-11-02T09:17:01.145Z",
     "updatedAt": "2025-11-02T09:17:25.657Z"
+  },
+  {
+    "id": "1762665130288",
+    "title": "Pop-up Event in Guangzhou",
+    "imageUrl": "https://pbs.twimg.com/media/G5Jvp1abAAATIDC?format=jpg&name=4096x4096",
+    "description": "Special Pop-up Event in Guangzhou with S2U",
+    "category": "Event",
+    "order": 13,
+    "isActive": true,
+    "createdAt": "2025-11-09T05:12:10.288Z",
+    "updatedAt": "2025-11-09T05:12:10.288Z"
+  },
+  {
+    "id": "1762665175804",
+    "title": "H2H in Hanyang University",
+    "imageUrl": "https://pbs.twimg.com/media/G1Fc3QIa4AAfS9h?format=jpg&name=large",
+    "description": "Hanyang University Festival",
+    "category": "Event",
+    "order": 14,
+    "isActive": true,
+    "createdAt": "2025-11-09T05:12:55.804Z",
+    "updatedAt": "2025-11-09T05:12:55.804Z"
   }
 ]

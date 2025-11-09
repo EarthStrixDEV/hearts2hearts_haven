@@ -1,0 +1,55 @@
+[
+  {
+    "id": "trk_focus",
+    "slug": "focus",
+    "title": "FOCUS",
+    "albumId": "alb_focus",
+    "durationSec": 198,
+    "audio": {
+      "hls": "/media/audio/focus/index.m3u8",
+      "mp3_160": "/media/audio/focus/160.mp3",
+      "mp3_320": "/media/audio/focus/320.mp3"
+    },
+    "artwork": "/media/art/focus.webp",
+    "explicit": false,
+    "bpm": 108,
+    "mood": ["confident", "energetic"],
+    "tags": ["k-pop", "title-track"],
+    "releaseDate": "2025-09-15",
+    "territories": ["GLOBAL", "TH", "KR"],
+    "creditsId": "cr_focus",
+    "lyricsIds": ["lyr_focus_kr", "lyr_focus_en", "lyr_focus_th"],
+    "membersParts": [
+      {"member": "Carmen", "from": 13.2, "to": 22.4},
+      {"member": "Yeon", "from": 22.5, "to": 30.1},
+      {"member": "Mina", "from": 30.2, "to": 38.5},
+      {"member": "Luna", "from": 38.6, "to": 47.0}
+    ]
+  },
+  {
+    "id": "trk_heartbeat",
+    "slug": "heartbeat",
+    "title": "Heartbeat",
+    "albumId": "alb_focus",
+    "durationSec": 205,
+    "audio": {
+      "hls": "/media/audio/heartbeat/index.m3u8",
+      "mp3_160": "/media/audio/heartbeat/160.mp3",
+      "mp3_320": "/media/audio/heartbeat/320.mp3"
+    },
+    "artwork": "/media/art/focus.webp",
+    "explicit": false,
+    "bpm": 120,
+    "mood": ["romantic", "emotional"],
+    "tags": ["k-pop", "ballad"],
+    "releaseDate": "2025-09-15",
+    "territories": ["GLOBAL", "TH", "KR"],
+    "creditsId": "cr_heartbeat",
+    "lyricsIds": ["lyr_heartbeat_kr", "lyr_heartbeat_en", "lyr_heartbeat_th"],
+    "membersParts": [
+      {"member": "Luna", "from": 10.0, "to": 25.0},
+      {"member": "Carmen", "from": 25.1, "to": 40.0}
+    ]
+  }
+]
+

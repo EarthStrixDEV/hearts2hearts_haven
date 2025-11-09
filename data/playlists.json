@@ -1,0 +1,12 @@
+[
+  {
+    "id": "pl_official_hits",
+    "title": "Hearts2Hearts Greatest Hits",
+    "owner": "official",
+    "tracks": ["trk_focus", "trk_heartbeat"],
+    "public": true,
+    "createdAt": "2025-09-15T00:00:00Z",
+    "updatedAt": "2025-09-15T00:00:00Z"
+  }
+]
+

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "t-tech",
+    "name": "Tech",
+    "slug": "tech"
+  },
+  {
+    "id": "t-kpop",
+    "name": "K-Pop",
+    "slug": "kpop"
+  },
+  {
+    "id": "t-news",
+    "name": "News",
+    "slug": "news"
+  }
+]
+

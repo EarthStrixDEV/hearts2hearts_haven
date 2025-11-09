@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { NewsArticle } from "../../types/news";
-import { getNewsArticleBySlug, getRelatedNews } from "../../lib/mockNewsData";
 
 export default function NewsArticlePage() {
   const params = useParams();
@@ -19,17 +18,31 @@ export default function NewsArticlePage() {
   const [hasLiked, setHasLiked] = useState(false);
 
   useEffect(() => {
-    // Simulate API call
-    setIsLoading(true);
-    setTimeout(() => {
-      const fetchedArticle = getNewsArticleBySlug(slug);
-      if (fetchedArticle) {
-        setArticle(fetchedArticle);
-        setLikes(fetchedArticle.likes || 0);
-        setRelatedArticles(getRelatedNews(fetchedArticle.id, 3));
+    const loadArticle = async () => {
+      setIsLoading(true);
+      try {
+        // Fetch article from API by slug
+        const response = await fetch(`/api/news/${slug}`);
+        if (response.ok) {
+          const data = await response.json();
+          setArticle(data.article);
+          setLikes(data.article.likes || 0);
+          setRelatedArticles(data.related || []);
+        } else {
+          console.error('Failed to load article');
+          setArticle(null);
+        }
+      } catch (error) {
+        console.error('Error loading article:', error);
+        setArticle(null);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
-    }, 300);
+    };
+
+    if (slug) {
+      loadArticle();
+    }
   }, [slug]);
 
   const formatDate = (dateString: string) => {

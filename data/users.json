@@ -1,0 +1,29 @@
+[
+  {
+    "id": "u1",
+    "email": "admin@h2h.com",
+    "name": "Admin User",
+    "passwordHash": "$2a$10$Ih/QqLJyDAOVWG2wwaDINuZDQk.xfasXD5SrAL62BZFbAcuQ8xH/m",
+    "role": "ADMIN",
+    "createdAt": "2025-11-02T16:30:54.047Z",
+    "updatedAt": "2025-11-02T16:30:54.049Z"
+  },
+  {
+    "id": "u2",
+    "email": "editor@h2h.com",
+    "name": "Editor User",
+    "passwordHash": "$2a$10$vS/rInXL41hSEEhxf9tGwexZA1jvYr2/aiCPsiwP/2q/5KiVoG4tS",
+    "role": "EDITOR",
+    "createdAt": "2025-11-02T16:30:54.161Z",
+    "updatedAt": "2025-11-02T16:30:54.161Z"
+  },
+  {
+    "id": "u3",
+    "email": "author@h2h.com",
+    "name": "Author User",
+    "passwordHash": "$2a$10$7e4.u76clmcctEScUNpQ4uuBsM3dIhST8.yn2UYemeGH8mTBO9PUC",
+    "role": "AUTHOR",
+    "createdAt": "2025-11-02T16:30:54.243Z",
+    "updatedAt": "2025-11-02T16:30:54.243Z"
+  }
+]

@@ -1,7 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import MagazineGrid from "@/components/MagazineGrid";
 
 interface GalleryImage {
   id: string;
@@ -15,8 +18,10 @@ interface GalleryImage {
   size: string;
 }
 
-
-export default function GalleryPage() {
+function GalleryContent() {
+  const searchParams = useSearchParams();
+  const memberParam = searchParams.get("member");
+  
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedMember, setSelectedMember] = useState("All");
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
@@ -45,6 +50,13 @@ export default function GalleryPage() {
     loadGalleryImages();
   }, []);
 
+  // Update selected member when URL param changes
+  useEffect(() => {
+    if (memberParam) {
+      setSelectedMember(memberParam);
+    }
+  }, [memberParam]);
+
   const categories = [
     "All",
     "Predebut",
@@ -72,10 +84,32 @@ export default function GalleryPage() {
     return categoryMatch && memberMatch;
   });
 
+  // Prepare images for Magazine Grid (first 7 images)
+  const magazineImages = galleryImages.slice(0, 7).map(img => ({
+    id: img.id,
+    imageUrl: img.imageUrl,
+    title: img.title,
+    caption: img.category,
+    member: img.member || undefined,
+  }));
+
+  const hasMagazineImages = magazineImages.length >= 7;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      {/* Magazine Grid Section - Featured Photos */}
+      {!isLoading && hasMagazineImages && (
+        <MagazineGrid
+          hero={magazineImages[0]}
+          medium={[magazineImages[1], magazineImages[2]]}
+          small={magazineImages.slice(3, 7)}
+          backgroundColor="cream"
+          showCaptions={true}
+          showGradientOverlay={true}
+        />
+      )}
+
+      <div className="max-w-7xl mx-auto py-12 px-4">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">
@@ -84,6 +118,17 @@ export default function GalleryPage() {
           <p className="text-xl text-gray-600 mb-8">
             Collect memories with H2H! {galleryImages.length} photos ✨
           </p>
+          
+          {/* Section Divider */}
+          {hasMagazineImages && (
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent w-full max-w-xs"></div>
+              <span className="text-sm font-semibold text-blue-600 tracking-wider uppercase whitespace-nowrap">
+                Browse All Photos
+              </span>
+              <div className="h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent w-full max-w-xs"></div>
+            </div>
+          )}
         </div>
 
         {/* Filters */}
@@ -190,9 +235,13 @@ export default function GalleryPage() {
                         {image.category}
                       </span>
                       {image.member && (
-                        <span className="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-1 rounded-full">
+                        <Link
+                          href={`/members/${image.member.toLowerCase()}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-1 rounded-full hover:bg-purple-200 transition-colors"
+                        >
                           {image.member}
-                        </span>
+                        </Link>
                       )}
                     </div>
                     <p className="text-sm text-gray-600 line-clamp-2">{image.title}</p>
@@ -294,9 +343,12 @@ export default function GalleryPage() {
                     {lightboxImage.category}
                   </span>
                   {lightboxImage.member && (
-                    <span className="text-sm font-semibold text-purple-600 bg-purple-100 px-3 py-1 rounded-full">
+                    <Link
+                      href={`/members/${lightboxImage.member.toLowerCase()}`}
+                      className="text-sm font-semibold text-purple-600 bg-purple-100 px-3 py-1 rounded-full hover:bg-purple-200 transition-colors"
+                    >
                       {lightboxImage.member}
-                    </span>
+                    </Link>
                   )}
                 </div>
                 <div className="text-sm text-gray-500 space-y-1">
@@ -360,5 +412,20 @@ export default function GalleryPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function GalleryPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center">
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">⏳</div>
+          <p className="text-xl text-gray-600">Loading gallery...</p>
+        </div>
+      </div>
+    }>
+      <GalleryContent />
+    </Suspense>
   );
 }

@@ -1,0 +1,398 @@
+/**
+ * 🌈 HOLOGRAM VFX - CSS VARIABLES & UTILITIES
+ * 
+ * K-POP Futuristic Theme Colors (aespa/NMIXX vibes)
+ * สีและ gradients สำหรับเอฟเฟกต์ hologram
+ */
+
+:root {
+  /* ============================================
+     HOLOGRAPHIC COLOR PALETTE
+     ============================================ */
+  
+  /* Neon Pink */
+  --holo-pink-50: rgba(252, 231, 243, 1);
+  --holo-pink-100: rgba(251, 207, 232, 1);
+  --holo-pink-200: rgba(251, 182, 206, 1);
+  --holo-pink-300: rgba(249, 168, 212, 1);
+  --holo-pink-400: rgba(244, 114, 182, 1);
+  --holo-pink-500: rgba(236, 72, 153, 1);
+  --holo-pink-600: rgba(219, 39, 119, 1);
+  --holo-pink-700: rgba(190, 24, 93, 1);
+  --holo-pink-glow: rgba(236, 72, 153, 0.5);
+
+  /* Cyber Blue */
+  --holo-blue-50: rgba(239, 246, 255, 1);
+  --holo-blue-100: rgba(219, 234, 254, 1);
+  --holo-blue-200: rgba(191, 219, 254, 1);
+  --holo-blue-300: rgba(147, 197, 253, 1);
+  --holo-blue-400: rgba(96, 165, 250, 1);
+  --holo-blue-500: rgba(59, 130, 246, 1);
+  --holo-blue-600: rgba(37, 99, 235, 1);
+  --holo-blue-700: rgba(29, 78, 216, 1);
+  --holo-blue-glow: rgba(59, 130, 246, 0.5);
+
+  /* Aqua Purple */
+  --holo-purple-50: rgba(250, 245, 255, 1);
+  --holo-purple-100: rgba(243, 232, 255, 1);
+  --holo-purple-200: rgba(233, 213, 255, 1);
+  --holo-purple-300: rgba(216, 180, 254, 1);
+  --holo-purple-400: rgba(192, 132, 252, 1);
+  --holo-purple-500: rgba(168, 85, 247, 1);
+  --holo-purple-600: rgba(147, 51, 234, 1);
+  --holo-purple-700: rgba(126, 34, 206, 1);
+  --holo-purple-glow: rgba(168, 85, 247, 0.5);
+
+  /* Neon Aqua */
+  --holo-aqua-50: rgba(236, 254, 255, 1);
+  --holo-aqua-100: rgba(207, 250, 254, 1);
+  --holo-aqua-200: rgba(165, 243, 252, 1);
+  --holo-aqua-300: rgba(103, 232, 249, 1);
+  --holo-aqua-400: rgba(34, 211, 238, 1);
+  --holo-aqua-500: rgba(6, 182, 212, 1);
+  --holo-aqua-600: rgba(8, 145, 178, 1);
+  --holo-aqua-700: rgba(14, 116, 144, 1);
+  --holo-aqua-glow: rgba(6, 182, 212, 0.5);
+
+  /* ============================================
+     HOLOGRAPHIC GRADIENTS
+     ============================================ */
+  
+  /* Rainbow Hologram (Photocard style) */
+  --holo-gradient-rainbow: linear-gradient(
+    135deg,
+    var(--holo-pink-500) 0%,
+    var(--holo-purple-500) 25%,
+    var(--holo-blue-500) 50%,
+    var(--holo-aqua-500) 75%,
+    var(--holo-pink-500) 100%
+  );
+
+  /* Pink-Purple Gradient */
+  --holo-gradient-pink-purple: linear-gradient(
+    135deg,
+    var(--holo-pink-500) 0%,
+    var(--holo-purple-500) 100%
+  );
+
+  /* Blue-Aqua Gradient */
+  --holo-gradient-blue-aqua: linear-gradient(
+    135deg,
+    var(--holo-blue-500) 0%,
+    var(--holo-aqua-500) 100%
+  );
+
+  /* Purple-Blue Gradient */
+  --holo-gradient-purple-blue: linear-gradient(
+    135deg,
+    var(--holo-purple-500) 0%,
+    var(--holo-blue-500) 100%
+  );
+
+  /* Radial Hologram Glow */
+  --holo-radial-glow: radial-gradient(
+    circle,
+    var(--holo-pink-glow) 0%,
+    var(--holo-purple-glow) 50%,
+    transparent 100%
+  );
+
+  /* ============================================
+     GLASS MORPHISM VARIABLES
+     ============================================ */
+  
+  --glass-bg-light: rgba(255, 255, 255, 0.7);
+  --glass-bg-dark: rgba(0, 0, 0, 0.3);
+  --glass-border-light: rgba(255, 255, 255, 0.5);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(20px);
+  --glass-blur-heavy: blur(40px);
+
+  /* ============================================
+     SHADOW & GLOW EFFECTS
+     ============================================ */
+  
+  --shadow-neon-pink: 0 0 20px var(--holo-pink-glow),
+                      0 0 40px var(--holo-pink-glow);
+  --shadow-neon-blue: 0 0 20px var(--holo-blue-glow),
+                      0 0 40px var(--holo-blue-glow);
+  --shadow-neon-purple: 0 0 20px var(--holo-purple-glow),
+                        0 0 40px var(--holo-purple-glow);
+  --shadow-neon-aqua: 0 0 20px var(--holo-aqua-glow),
+                      0 0 40px var(--holo-aqua-glow);
+  
+  /* Multi-color hologram glow */
+  --shadow-holo-multi: 0 0 30px var(--holo-pink-glow),
+                       0 0 60px var(--holo-blue-glow),
+                       0 0 90px var(--holo-purple-glow);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+[data-theme="dark"],
+.dark {
+  --glass-bg-light: rgba(0, 0, 0, 0.5);
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Hologram Text Gradient */
+.text-holo-rainbow {
+  background: var(--holo-gradient-rainbow);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holo-shift 3s ease infinite;
+}
+
+.text-holo-pink-purple {
+  background: var(--holo-gradient-pink-purple);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-holo-blue-aqua {
+  background: var(--holo-gradient-blue-aqua);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hologram Background */
+.bg-holo-rainbow {
+  background: var(--holo-gradient-rainbow);
+  background-size: 200% 200%;
+  animation: holo-shift 3s ease infinite;
+}
+
+.bg-holo-pink-purple {
+  background: var(--holo-gradient-pink-purple);
+}
+
+.bg-holo-blue-aqua {
+  background: var(--holo-gradient-blue-aqua);
+}
+
+/* Glass Background */
+.glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border-light);
+}
+
+.glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border-dark);
+}
+
+.glass-heavy {
+  backdrop-filter: var(--glass-blur-heavy);
+}
+
+/* Neon Glow Effects */
+.glow-pink {
+  box-shadow: var(--shadow-neon-pink);
+}
+
+.glow-blue {
+  box-shadow: var(--shadow-neon-blue);
+}
+
+.glow-purple {
+  box-shadow: var(--shadow-neon-purple);
+}
+
+.glow-aqua {
+  box-shadow: var(--shadow-neon-aqua);
+}
+
+.glow-holo {
+  box-shadow: var(--shadow-holo-multi);
+}
+
+/* Hover Glow Intensify */
+.hover-glow-pink:hover {
+  box-shadow: 0 0 30px var(--holo-pink-glow),
+              0 0 60px var(--holo-pink-glow);
+}
+
+.hover-glow-blue:hover {
+  box-shadow: 0 0 30px var(--holo-blue-glow),
+              0 0 60px var(--holo-blue-glow);
+}
+
+.hover-glow-purple:hover {
+  box-shadow: 0 0 30px var(--holo-purple-glow),
+              0 0 60px var(--holo-purple-glow);
+}
+
+.hover-glow-holo:hover {
+  box-shadow: 0 0 40px var(--holo-pink-glow),
+              0 0 80px var(--holo-blue-glow),
+              0 0 120px var(--holo-purple-glow);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes holo-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes holo-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes holo-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+/* Animation Utilities */
+.animate-holo-shift {
+  animation: holo-shift 3s ease infinite;
+}
+
+.animate-holo-rotate {
+  animation: holo-rotate 10s linear infinite;
+}
+
+.animate-holo-pulse {
+  animation: holo-pulse 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-float-up {
+  animation: float-up 2s ease-out;
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .text-holo-rainbow,
+  .bg-holo-rainbow,
+  .animate-holo-shift,
+  .animate-holo-rotate,
+  .animate-holo-pulse,
+  .animate-shimmer,
+  .animate-float-up {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce blur intensity on mobile */
+  :root {
+    --glass-blur: blur(10px);
+    --glass-blur-heavy: blur(20px);
+  }
+
+  /* Reduce glow effects on mobile */
+  .glow-pink,
+  .glow-blue,
+  .glow-purple,
+  .glow-aqua,
+  .glow-holo {
+    box-shadow: none;
+  }
+
+  /* Disable hover effects on mobile */
+  .hover-glow-pink:hover,
+  .hover-glow-blue:hover,
+  .hover-glow-purple:hover,
+  .hover-glow-holo:hover {
+    box-shadow: none;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Use GPU acceleration for animations */
+.glass-light,
+.glass-dark,
+.glow-pink,
+.glow-blue,
+.glow-purple,
+.glow-aqua,
+.glow-holo {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize backdrop-filter */
+.glass-light,
+.glass-dark {
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+

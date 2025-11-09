@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { login } from "@/lib/auth";
 import h2h_logo from "../../../public/images/h2h_logo.png";
 
 export default function CMSLogin() {
@@ -18,31 +19,12 @@ export default function CMSLogin() {
     setError("");
     setIsLoading(true);
 
-    try {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
+    const result = await login(username, password);
 
-      const data = await response.json();
-
-      if (response.ok && data.user) {
-        // Save user data to localStorage (without password)
-        localStorage.setItem("cms_user", JSON.stringify(data.user));
-        router.push("/cms");
-      } else {
-        setError(data.error || "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setError("เกิดข้อผิดพลาดในการเข้าสู่ระบบ กรุณาลองใหม่อีกครั้ง");
+    if (result.success) {
+      router.push("/cms");
+    } else {
+      setError(result.error || "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
       setIsLoading(false);
     }
   };

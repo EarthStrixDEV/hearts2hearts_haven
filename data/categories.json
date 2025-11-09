@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c-tech",
+    "name": "Technology",
+    "slug": "technology"
+  },
+  {
+    "id": "c-music",
+    "name": "Music",
+    "slug": "music"
+  },
+  {
+    "id": "c-lifestyle",
+    "name": "Lifestyle",
+    "slug": "lifestyle"
+  }
+]
+

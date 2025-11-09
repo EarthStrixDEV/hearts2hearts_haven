@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "scontent.cdninstagram.com",
       },
+      {
+        protocol: "https",
+        hostname: "media.discordapp.net",
+      },
     ],
   },
 };

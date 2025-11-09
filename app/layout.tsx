@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import "@/styles/hologram.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 

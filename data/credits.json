@@ -1,0 +1,21 @@
+[
+  {
+    "id": "cr_focus",
+    "trackId": "trk_focus",
+    "composer": ["Park Ji-min", "Kim Tae-hyun"],
+    "lyricist": ["Lee Soo-jin", "Carmen"],
+    "arranger": ["Park Ji-min"],
+    "producer": ["HYBE Production Team"],
+    "label": "Hearts2Hearts Entertainment"
+  },
+  {
+    "id": "cr_heartbeat",
+    "trackId": "trk_heartbeat",
+    "composer": ["Choi Min-ho"],
+    "lyricist": ["Luna", "Yeon"],
+    "arranger": ["Choi Min-ho"],
+    "producer": ["HYBE Production Team"],
+    "label": "Hearts2Hearts Entertainment"
+  }
+]
+
